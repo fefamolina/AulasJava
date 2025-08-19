@@ -2,7 +2,7 @@ package pilhas;
 
 public class Pilhaint {
 	
-	final int N = 6;
+	final int N = 32;
 	int topo;
 	int dados [] = new int[N];
 	
@@ -14,13 +14,26 @@ public class Pilhaint {
 		return (topo==0);
 	}
 	
+	public void esvazia() {
+		while (!isEmpty())
+			System.out.println(pop());
+	}
+	
 	public boolean isFull() {
 		return (topo==N);
 	}
 	
 	public void push(int elem) {
-		dados[topo] = elem;
-		topo++;
+		if (isFull())
+			System.out.println("Stack overflow");
+		else {
+			dados[topo] = elem;
+			topo++;
+		}
+	}
+	
+	public int top() {
+		return(dados[topo-1]);
 	}
 	
 	public int pop() {
